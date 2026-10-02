@@ -1,0 +1,7 @@
+birdnet_analyzer==2.4.0
+firebase_admin==7.5.0
+numpy==2.5.2
+paho-mqtt==2.1.0
+scipy==1.18.1
+sounddevice==0.5.6
+tensorflow==2.21.0

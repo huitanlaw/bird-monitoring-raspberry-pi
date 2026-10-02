@@ -1,0 +1,22 @@
+[Unit]
+Description=BirdNET SQLite to MQTT Cloud-ACK Publisher
+After=mosquitto.service
+Wants=mosquitto.service
+
+[Service]
+Type=simple
+User=birdnet
+Group=birdnet
+WorkingDirectory=/home/birdnet
+Environment=PYTHONUNBUFFERED=1
+
+ExecStart=/home/birdnet/birdnet-env/bin/python -u /home/birdnet/events_to_mqtt.py
+
+Restart=always
+RestartSec=10
+
+KillSignal=SIGTERM
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target

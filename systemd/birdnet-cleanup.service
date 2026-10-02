@@ -1,0 +1,11 @@
+[Unit]
+Description=BirdNET SQLite 24-Hour Storage Cleanup
+After=local-fs.target
+
+[Service]
+Type=oneshot
+User=birdnet
+Group=birdnet
+WorkingDirectory=/home/birdnet
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/birdnet/birdnet-env/bin/python -u /home/birdnet/birdnet_cleanup.py

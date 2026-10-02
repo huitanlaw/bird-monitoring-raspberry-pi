@@ -1,0 +1,23 @@
+[Unit]
+Description=BirdNET Continuous 3 Second RAM Monitoring Service
+After=local-fs.target
+
+[Service]
+Type=simple
+User=birdnet
+Group=birdnet
+WorkingDirectory=/home/birdnet
+Environment=PYTHONUNBUFFERED=1
+
+ExecStartPre=/bin/sleep 5
+
+ExecStart=/home/birdnet/birdnet-env/bin/python -u /home/birdnet/bird_monitor_ram_v1.py
+
+Restart=on-failure
+RestartSec=60
+
+KillSignal=SIGINT
+TimeoutStopSec=60
+
+[Install]
+WantedBy=multi-user.target

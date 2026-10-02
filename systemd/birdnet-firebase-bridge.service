@@ -1,0 +1,22 @@
+[Unit]
+Description=BirdNET MQTT to Firestore Cloud-ACK Bridge
+After=mosquitto.service network-online.target
+Wants=mosquitto.service network-online.target
+
+[Service]
+Type=simple
+User=birdnet
+Group=birdnet
+WorkingDirectory=/home/birdnet
+Environment=PYTHONUNBUFFERED=1
+
+ExecStart=/home/birdnet/birdnet-env/bin/python -u /home/birdnet/mqtt_to_firebase.py
+
+Restart=always
+RestartSec=10
+
+KillSignal=SIGTERM
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target
